@@ -19,6 +19,8 @@
         <jfinal.version>2.2</jfinal.version>
         <!-- jetty-server 版本号 -->
         <jetty-server.version>8.1.8</jetty-server.version>
+        <!-- freemarker 版本号 -->
+        <freemarker.version>2.3.25-incubating</freemarker.version>
         <!-- OSChina Maven 镜像地址 -->
         <repository.url>http://maven.oschina.net/content/groups/public/</repository.url>
     </properties>
@@ -39,6 +41,13 @@
             <artifactId>jetty-server</artifactId>
             <version>${jetty-server.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.freemarker/freemarker -->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>${freemarker.version}</version>
+        </dependency>
+
     </dependencies>
     <!-- Maven mirror -->
     <repositories>
