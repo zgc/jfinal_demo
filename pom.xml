@@ -38,7 +38,6 @@
             <groupId>com.jfinal</groupId>
             <artifactId>jetty-server</artifactId>
             <version>${jetty-server.version}</version>
-
         </dependency>
     </dependencies>
     <!-- Maven mirror -->
