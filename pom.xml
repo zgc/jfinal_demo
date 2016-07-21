@@ -47,7 +47,6 @@
             <artifactId>freemarker</artifactId>
             <version>${freemarker.version}</version>
         </dependency>
-
     </dependencies>
     <!-- Maven mirror -->
     <repositories>

@@ -25,6 +25,6 @@ public class HelloController extends Controller {
     }
 
     public void download(){
-        renderFile("jfinal_demo.war");
+        renderFile("jfinal_demo");
     }
 }
