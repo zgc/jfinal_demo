@@ -28,7 +28,7 @@ public class DemoConfig extends JFinalConfig {
 //        me.setMaxPostSize(1024 * 1024 * 100);//设置post请求大小
         me.setReportAfterInvocation(false);//设置log打印顺序
 //        me.setTokenCache(null);//设置token缓存
-//        me.setUrlParaSeparator("");//设置url参数分割符
+//        me.setUrlParaSeparator("-");//设置url参数分割符
 //        me.setVelocityViewExtension("");//设置velocity的默认后缀，默认.html
 //        me.setViewType(ViewType.FREE_MARKER);//设置视图类型
 //        me.setXmlRenderFactory(null);//设置xml渲染器工程
