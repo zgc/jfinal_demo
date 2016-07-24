@@ -7,7 +7,10 @@ import com.jfinal.core.Controller;
  */
 public class IndexController extends Controller {
 
-    public void index() {
+    public int index() {
+        System.out.println("=====index=====");
         renderText("this IndexController...");
+
+        return 0;
     }
 }

@@ -38,6 +38,8 @@ public class DemoConfig extends JFinalConfig {
     public void configRoute(Routes me) {
         me.add("/hello", HelloController.class);
         me.add("/", IndexController.class);
+
+        me.add("/test", TestController.class, "test/index");
     }
 
     public void configPlugin(Plugins me) {
@@ -47,5 +49,6 @@ public class DemoConfig extends JFinalConfig {
     }
 
     public void configHandler(Handlers me) {
+//        me.add(handler);
     }
 }
