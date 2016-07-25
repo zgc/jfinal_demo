@@ -29,11 +29,11 @@ public class IndexController extends Controller {
         System.out.println("para1:" + getPara(1, "test"));
 //        System.out.println("para2:" + URLDecoder.decode(getPara(2, "")));
 
-        int para2 = getParaToInt(2,100);
+        int para2 = getParaToInt(2, 100);
 
         System.out.println("para2:" + para2);
 
-        String title = getPara("title");
+        String title = getPara("title", "这是设置默认标题");
         String subtitle = getPara("subtitle");
         String content = getPara("content");
 
