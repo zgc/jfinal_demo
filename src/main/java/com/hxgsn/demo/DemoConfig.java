@@ -25,7 +25,7 @@ public class DemoConfig extends JFinalConfig {
 //        me.setJsonFactory(null);//设置json工厂
 //        me.setJspViewExtension("");//设置jsp的默认后缀，默认.html
 //        me.setMainRenderFactory(null);//设置渲染视图类
-//        me.setMaxPostSize(1024 * 1024 * 100);//设置post请求大小
+        me.setMaxPostSize(1024 * 1024 * 100);//设置post请求大小
         me.setReportAfterInvocation(false);//设置log打印顺序
 //        me.setTokenCache(null);//设置token缓存
 //        me.setUrlParaSeparator("-");//设置url参数分割符

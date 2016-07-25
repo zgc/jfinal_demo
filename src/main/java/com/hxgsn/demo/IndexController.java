@@ -1,6 +1,7 @@
 package com.hxgsn.demo;
 
 import com.jfinal.core.Controller;
+import com.jfinal.upload.UploadFile;
 
 import java.net.URLDecoder;
 
@@ -41,18 +42,32 @@ public class IndexController extends Controller {
 //        System.out.println("subtitle---->" + subtitle);
 //        System.out.println("content---->" + content);
 
-        Article article = getBean(Article.class, "ar1");
+//        Article article = getBean(Article.class, "ar1");
 //        Article article = getBean(Article.class, "");
 
-        Article article1 = getModel(Article.class, "");
-
-        System.out.println("title:" + article.getTitle());
-        System.out.println("subtitle:" + article.getSubtitle());
-        System.out.println("content:" + article.getContent());
-
-        System.err.println(article);
+//        Article article1 = getModel(Article.class, "");
+//
+//        System.out.println("title:" + article.getTitle());
+//        System.out.println("subtitle:" + article.getSubtitle());
+//        System.out.println("content:" + article.getContent());
+//
+//        System.err.println(article);
 
         render("/index.html");
+    }
+
+    public void upload() {
+        //调用getFile，必须是multipart/form-data
+        //文件大小的限制可能会出错，通过config的setMaxPostSize去设置允许上传的最大数据
+        //getFile必须依赖com.jfinal.cos
+        UploadFile ufile = getFile("tx", "touxiang");
+        UploadFile sfzfile = getFile("sfz");
+
+        //当有其它form提交的时候，先调用getFile解析MultipartRequest，才能调用getPara接受参数
+        String title = getPara("title");
+        System.out.println("=====title:" + title);
+
+        renderText("upload....");
     }
 
 //    public void jpress() {

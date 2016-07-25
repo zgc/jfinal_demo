@@ -21,6 +21,8 @@
         <jetty-server.version>8.1.8</jetty-server.version>
         <!-- freemarker 版本号 -->
         <freemarker.version>2.3.25-incubating</freemarker.version>
+        <!-- cos 版本号 -->
+        <cos.version>26Dec2008</cos.version>
         <!-- OSChina Maven 镜像地址 -->
         <repository.url>http://maven.oschina.net/content/groups/public/</repository.url>
     </properties>
@@ -47,6 +49,13 @@
             <artifactId>freemarker</artifactId>
             <version>${freemarker.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.jfinal/cos -->
+        <dependency>
+            <groupId>com.jfinal</groupId>
+            <artifactId>cos</artifactId>
+            <version>${cos.version}</version>
+        </dependency>
+
     </dependencies>
     <!-- Maven mirror -->
     <repositories>
