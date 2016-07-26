@@ -60,8 +60,10 @@ public class IndexController extends Controller {
         //调用getFile，必须是multipart/form-data
         //文件大小的限制可能会出错，通过config的setMaxPostSize去设置允许上传的最大数据
         //getFile必须依赖com.jfinal.cos
-        UploadFile ufile = getFile("tx", "touxiang");
+        //默认使用第一个实例化的UploadFile
+        getFile();
         UploadFile sfzfile = getFile("sfz");
+        UploadFile ufile = getFile("tx", "touxiang");
 
         //当有其它form提交的时候，先调用getFile解析MultipartRequest，才能调用getPara接受参数
         String title = getPara("title");
