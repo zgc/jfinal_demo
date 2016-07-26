@@ -8,7 +8,7 @@ import com.jfinal.core.Controller;
  */
 public class HelloController extends Controller {
 
-//    @ActionKey("/index")
+    //    @ActionKey("/index")
     public void index() {
 //        renderText("Hello JFinal World.");
 
@@ -23,10 +23,11 @@ public class HelloController extends Controller {
     }
 
     public void test() {
-        renderText("test ...");
+//        renderText("test ...");
+        redirect("/hello/test");
     }
 
-    public void download(){
+    public void download() {
         renderFile("jfinal_demo");
     }
 }

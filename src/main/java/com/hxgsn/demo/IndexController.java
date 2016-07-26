@@ -53,6 +53,14 @@ public class IndexController extends Controller {
 //
 //        System.err.println(article);
 
+//        getRequest();
+//        getResponse();
+
+        String ua = getRequest().getHeader("User-Agent");
+        System.out.println(">>>>:" + ua);
+
+        getResponse().setHeader("test", "test");
+
         render("/index.html");
     }
 
