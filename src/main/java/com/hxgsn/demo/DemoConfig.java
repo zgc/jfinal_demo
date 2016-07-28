@@ -38,6 +38,7 @@ public class DemoConfig extends JFinalConfig {
     public void configRoute(Routes me) {
         me.add("/hello", HelloController.class);
         me.add("/", IndexController.class);
+        me.add("/user", UserController.class);
 
         me.add("/test", TestController.class, "test/index");
     }

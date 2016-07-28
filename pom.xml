@@ -12,7 +12,7 @@
         <!-- jdk 版本号 -->
         <jdk.version>1.8</jdk.version>
         <!-- maven 版本号 -->
-        <org.apache.maven.plugins.version>3.3</org.apache.maven.plugins.version>
+        <org.apache.maven.plugins.version>3.5.1</org.apache.maven.plugins.version>
         <!-- junit 版本号 -->
         <junit.version>4.12</junit.version>
         <!-- jfinal 版本号 -->
@@ -23,8 +23,8 @@
         <freemarker.version>2.3.25-incubating</freemarker.version>
         <!-- cos 版本号 -->
         <cos.version>26Dec2008</cos.version>
-        <!-- OSChina Maven 镜像地址 -->
-        <repository.url>http://maven.oschina.net/content/groups/public/</repository.url>
+        <!-- Maven 镜像地址 -->
+        <repository.url>http://repository.jboss.org/nexus/content/groups/public</repository.url>
     </properties>
     <dependencies>
         <dependency>
@@ -55,7 +55,6 @@
             <artifactId>cos</artifactId>
             <version>${cos.version}</version>
         </dependency>
-
     </dependencies>
     <!-- Maven mirror -->
     <repositories>

@@ -56,10 +56,15 @@ public class IndexController extends Controller {
 //        getRequest();
 //        getResponse();
 
-        String ua = getRequest().getHeader("User-Agent");
-        System.out.println(">>>>:" + ua);
+//        String ua = getRequest().getHeader("User-Agent");
+//        System.out.println(">>>>:" + ua);
 
-        getResponse().setHeader("test", "test");
+//        getResponse().setHeader("test", "test");
+
+        //getSessionAttr内部先去获取浏览器提交的cookie，key：JSESSIONID == 随机字符串
+        //通过JSESSIONID找到MAP，然后再去这个map里获得user的值
+        String user = getSessionAttr("user");
+        System.out.println("user >>>>>>" + user);
 
         render("/index.html");
     }
@@ -84,4 +89,24 @@ public class IndexController extends Controller {
 //        System.out.println("xxxx");
 //        renderText("x");
 //    }
+
+    public void cookie() {
+        String username = getPara("user");
+        String password = getPara("pwd");
+
+        if ("test".equals(username) && "t".equals(password)) {
+//            setCookie("user", "test", 60 * 60 * 24);
+            //设置session，给客户端颁发了一个通行证：JSESSIONID：随机字符串
+            //同时设置了一个MAP,通过 随机字符串 对应到 >>> map
+            setSessionAttr("user", "test");
+        }
+//        else {
+//            removeCookie("user");
+//        }
+
+        if ("t".equals(username) && "test".equals(password)) {
+            setSessionAttr("user", "t");
+        }
+        renderText("ok >>>");
+    }
 }
