@@ -31,6 +31,9 @@ public class UserController extends Controller {
 
         if (pwd.equals(password)) {
             String cookieinfo = user + "#" + HashKit.sha512(user + sha512_pwd);
+
+            setSessionAttr("user", cookieinfo);
+
             setCookie("user", cookieinfo, 1000, true);
             redirect("/user/center");
             return;
