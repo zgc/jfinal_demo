@@ -1,6 +1,11 @@
 package com.hxgsn.demo;
 
+import com.hxgsn.render.freemarker.ArticlesTag;
 import com.jfinal.config.*;
+import com.jfinal.render.FreeMarkerRender;
+import com.jfinal.render.IMainRenderFactory;
+import com.jfinal.render.Render;
+import com.jfinal.render.TextRender;
 import com.jfinal.render.ViewType;
 
 /**
@@ -16,7 +21,7 @@ public class DemoConfig extends JFinalConfig {
 //        me.setEncoding("utf-8");//设置jfinal编码
 //        me.setError401View("");//设置401错误的视图
         me.setError404View("404.html");//设置404错误的视图
-        me.setErrorRenderFactory(new MyErrorRenderFactory());//设置错误视图工厂
+//        me.setErrorRenderFactory(new MyErrorRenderFactory());//设置错误视图工厂
 //        me.setErrorView(401,"");//设置401错误的视图
 //        me.setFreeMarkerTemplateUpdateDelay(0);//设置freemarker模板引擎的更新时间
 //        me.setFreeMarkerViewExtension("");//设置freemarker的默认后缀，默认.html
@@ -24,7 +29,17 @@ public class DemoConfig extends JFinalConfig {
 //        me.setI18nDefaultLocale("");//设置国际化默认的语言
 //        me.setJsonFactory(null);//设置json工厂
 //        me.setJspViewExtension("");//设置jsp的默认后缀，默认.html
-//        me.setMainRenderFactory(null);//设置渲染视图类
+        me.setMainRenderFactory(new IMainRenderFactory() {
+            @Override
+            public Render getRender(String view) {
+                return new TextRender("自定义RenderFactory...");
+            }
+
+            @Override
+            public String getViewExtension() {
+                return null;
+            }
+        });//设置渲染视图类
         me.setMaxPostSize(1024 * 1024 * 100);//设置post请求大小
         me.setReportAfterInvocation(false);//设置log打印顺序
 //        me.setTokenCache(null);//设置token缓存
@@ -39,6 +54,7 @@ public class DemoConfig extends JFinalConfig {
         me.add("/hello", HelloController.class);
         me.add("/", IndexController.class);
         me.add("/user", UserController.class);
+        me.add("/render", RenderController.class);
 
         me.add("/test", TestController.class, "test/index");
     }
@@ -51,5 +67,12 @@ public class DemoConfig extends JFinalConfig {
 
     public void configHandler(Handlers me) {
 //        me.add(handler);
+    }
+
+    @Override
+    public void afterJFinalStart() {
+        super.afterJFinalStart();
+
+        FreeMarkerRender.getConfiguration().setSharedVariable("aTag", new ArticlesTag());
     }
 }
