@@ -5,14 +5,14 @@
     <title>Insert title here</title>
 </head>
 <body>
-<#include "inc_header.html"/>
+<#include "inc_header.ftl"/>
 <div>
-    <@aTag>
+<@aTag>
     <#list articles as article>
         <a href="#">${article}</a> <br/> <br/>
     </#list>
-    </@aTag>
+</@aTag>
 </div>
-<#include "inc_footer.html"/>
+<#include "inc_footer.ftl"/>
 </body>
 </html>

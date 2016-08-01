@@ -1,5 +1,6 @@
 package com.hxgsn.demo;
 
+import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.HashKit;
 import com.jfinal.upload.UploadFile;
@@ -14,8 +15,10 @@ public class UserController extends Controller {
 
     private static final String sha512_pwd = "test";
 
+//    @Before(xxx)
     public void index() {
-        render("/user.html");
+        System.out.println("");
+        render("/user.ftl");
     }
 
     public void login() {
@@ -25,7 +28,10 @@ public class UserController extends Controller {
         //第一步，通过用户名获取用户，看用户是否存在
         String pwd = users.get(user);
         if (pwd == null) {
-            redirect("/user");
+//            redirect("/user");
+//            redirect301("/user");
+//            index();
+            forwardAction("/user");//优先调用拦截器
             return;
         }
 

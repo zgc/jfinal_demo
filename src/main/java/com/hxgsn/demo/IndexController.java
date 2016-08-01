@@ -66,7 +66,7 @@ public class IndexController extends Controller {
         String user = getSessionAttr("user");
         System.out.println("user >>>>>>" + user);
 
-        render("/index.html");
+        render("/index.ftl");
     }
 
     public void upload() {

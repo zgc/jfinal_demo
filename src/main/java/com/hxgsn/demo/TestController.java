@@ -9,6 +9,6 @@ public class TestController extends Controller {
 
     public void index() {
 //        renderText("test controller...");
-        render("test.html");//如果以/开头，会去webapp目录下面找
+        render("test.ftl");//如果以/开头，会去webapp目录下面找
     }
 }

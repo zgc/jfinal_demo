@@ -11,14 +11,14 @@ import java.util.List;
 public class RenderController extends Controller {
 
     public void index() {
-        //render/index.html
+        //render/index.ftl
 //        renderError(404);
 //        renderText("hi");
 //        renderText("hi,test!");
 //        renderHtml("hello");
 //        renderXml("hello,test!");
 //        renderJavascript("test");
-        render("/user.html");
+        render("/user.ftl");
     }
 
     public void uindex() {
@@ -47,10 +47,10 @@ public class RenderController extends Controller {
 //        setAttr("articles", articles);
         setAttr("users", users);
 
-        render("/user_index.html");
+        render("/user_index.ftl");
     }
 
     public void ucat() {
-        render("/user_cat.html");
+        render("/user_cat.ftl");
     }
 }

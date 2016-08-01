@@ -19,7 +19,7 @@ public class HelloController extends Controller {
 //        renderJson(data);
 //        renderText("hello index!!!");
         System.out.println("=====index=====");
-        render("/hello.html");
+        render("/hello.ftl");
     }
 
     public void test() {
