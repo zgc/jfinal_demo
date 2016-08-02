@@ -75,7 +75,9 @@
                         </div>
                         <!-- /. tools -->
                     </div>
-                    <form action="login" method="post">
+                    <form action="user/login" method="post">
+                        <!--<input type="hidden" name="_jfinal_token" value="${_jfinal_token!}">-->
+                        ${token!}
                         <div class="box-body">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="user"

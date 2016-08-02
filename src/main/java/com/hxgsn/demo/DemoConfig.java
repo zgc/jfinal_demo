@@ -7,6 +7,10 @@ import com.jfinal.render.IMainRenderFactory;
 import com.jfinal.render.Render;
 import com.jfinal.render.TextRender;
 import com.jfinal.render.ViewType;
+import com.jfinal.token.ITokenCache;
+import com.jfinal.token.Token;
+
+import java.util.List;
 
 /**
  * Created by zgc on 16-7-13.
@@ -42,7 +46,28 @@ public class DemoConfig extends JFinalConfig {
 //        });//设置渲染视图类
         me.setMaxPostSize(1024 * 1024 * 100);//设置post请求大小
         me.setReportAfterInvocation(false);//设置log打印顺序
-//        me.setTokenCache(null);//设置token缓存
+        me.setTokenCache(new ITokenCache() {
+            @Override
+            public void put(Token token) {
+                System.out.println(">>>>>>put:" + token.getId());
+            }
+
+            @Override
+            public void remove(Token token) {
+
+            }
+
+            @Override
+            public boolean contains(Token token) {
+                System.out.println(">>>>>>contains:" + token.getId());
+                return false;
+            }
+
+            @Override
+            public List<Token> getAll() {
+                return null;
+            }
+        });//设置token缓存
 //        me.setUrlParaSeparator("-");//设置url参数分割符
 //        me.setVelocityViewExtension("");//设置velocity的默认后缀，默认.html
 //        me.setViewType(ViewType.FREE_MARKER);//设置视图类型

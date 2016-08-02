@@ -15,13 +15,22 @@ public class UserController extends Controller {
 
     private static final String sha512_pwd = "test";
 
-//    @Before(xxx)
+    //    @Before(xxx)
     public void index() {
         System.out.println("");
         render("/user.ftl");
+        createToken();
     }
 
     public void login() {
+        if (!validateToken()) {
+            System.out.println("token验证不成功～～～～");
+            redirect("/user");
+            return;
+        }
+
+        System.out.println("token验证成功！！！！！");
+
         String user = getPara("user");
         String password = getPara("password");
 
