@@ -27,7 +27,8 @@
     <!-- Daterange picker -->
     <link rel="stylesheet" href="/jfinal_demo/plugins/daterangepicker/daterangepicker-bs3.css">
     <!-- bootstrap wysihtml5 - text editor -->
-    <link rel="stylesheet" href="/jfinal_demo/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet"
+          href="/jfinal_demo/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -77,7 +78,7 @@
                     </div>
                     <form action="user/login" method="post">
                         <!--<input type="hidden" name="_jfinal_token" value="${_jfinal_token!}">-->
-                        ${token!}
+                    ${token!}
                         <div class="box-body">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="user"
@@ -86,6 +87,12 @@
                             <div class="form-group">
                                 <input type="text" class="form-control" name="password"
                                        placeholder="密码：">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="yzm"
+                                       placeholder="验证码：">
+                                <img src="user/yzm"
+                                     onclick="this.src='user/yzm?x=' + Math.random()">
                             </div>
                         </div>
                         <div class="box-footer clearfix">

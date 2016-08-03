@@ -23,13 +23,19 @@ public class UserController extends Controller {
     }
 
     public void login() {
-        if (!validateToken()) {
-            System.out.println("token验证不成功～～～～");
+        if (!validateCaptcha("yzm")) {
+            System.out.println("验证码验证不通过～～～～～");
             redirect("/user");
             return;
         }
-
-        System.out.println("token验证成功！！！！！");
+        System.out.println("验证码验证通过!!!!!");
+//        if (!validateToken()) {
+//            System.out.println("token验证不成功～～～～");
+//            redirect("/user");
+//            return;
+//        }
+//
+//        System.out.println("token验证成功！！！！！");
 
         String user = getPara("user");
         String password = getPara("password");
@@ -81,6 +87,10 @@ public class UserController extends Controller {
             renderText(user + ",你是非法用户！！！！");
         }
         //username#md5(username); #user
+    }
+
+    public void yzm() {
+        renderCaptcha();
     }
 
     static Map<String, String> users = new HashMap<>();
