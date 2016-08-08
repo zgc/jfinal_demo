@@ -63,9 +63,9 @@ public class IndexController extends Controller {
 
         //getSessionAttr内部先去获取浏览器提交的cookie，key：JSESSIONID == 随机字符串
         //通过JSESSIONID找到MAP，然后再去这个map里获得user的值
-        String user = getSessionAttr("user");
-        System.out.println("user >>>>>>" + user);
-
+//        String user = getSessionAttr("user");
+//        System.out.println("user >>>>>>" + user);
+//
         render("/index.ftl");
     }
 

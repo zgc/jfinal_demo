@@ -1,5 +1,7 @@
 package com.hxgsn.demo;
 
+import com.hxgsn.handler.Handler1;
+import com.hxgsn.handler.Handler2;
 import com.hxgsn.render.freemarker.ArticlesTag;
 import com.jfinal.config.*;
 import com.jfinal.render.FreeMarkerRender;
@@ -92,6 +94,8 @@ public class DemoConfig extends JFinalConfig {
 
     public void configHandler(Handlers me) {
 //        me.add(handler);
+        me.add(new Handler1());
+        me.add(new Handler2());
     }
 
     @Override
