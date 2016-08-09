@@ -4,6 +4,7 @@ import com.hxgsn.handler.Handler1;
 import com.hxgsn.handler.Handler2;
 import com.hxgsn.render.freemarker.ArticlesTag;
 import com.jfinal.config.*;
+import com.jfinal.ext.handler.FakeStaticHandler;
 import com.jfinal.render.FreeMarkerRender;
 import com.jfinal.render.IMainRenderFactory;
 import com.jfinal.render.Render;
@@ -94,6 +95,7 @@ public class DemoConfig extends JFinalConfig {
 
     public void configHandler(Handlers me) {
 //        me.add(handler);
+        me.add(new FakeStaticHandler());
         me.add(new Handler1());
         me.add(new Handler2());
     }
