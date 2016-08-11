@@ -18,9 +18,10 @@ public class UserController extends Controller {
 
     //    @Before(xxx)
     public void index() {
-        System.out.println("");
-        render("/user.ftl");
-        createToken();
+//        System.out.println("");
+//        render("/user.ftl");
+//        createToken();
+        renderText("user......");
     }
 
     public void login() {

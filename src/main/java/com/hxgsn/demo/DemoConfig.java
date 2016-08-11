@@ -95,7 +95,7 @@ public class DemoConfig extends JFinalConfig {
 
     public void configHandler(Handlers me) {
 //        me.add(handler);
-        me.add(new FakeStaticHandler());
+//        me.add(new FakeStaticHandler());
         me.add(new Handler1());
         me.add(new Handler2());
     }

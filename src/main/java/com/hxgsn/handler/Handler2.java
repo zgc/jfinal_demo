@@ -12,6 +12,8 @@ public class Handler2 extends Handler {
     @Override
     public void handle(String target, HttpServletRequest request, HttpServletResponse response, boolean[] isHandled) {
         System.out.println("Handler2 invoke!!! 	" + target);
+        target = "/user";
+        System.out.println(">>>>:" + target);
         next.handle(target, request, response, isHandled);
     }
 }
