@@ -8,6 +8,6 @@ import com.jfinal.core.JFinal;
 public class Start {
 
     public static void main(String[] args) {
-        JFinal.start("src/main/webapp", 8080, "/jfinal_demo", 5);
+        JFinal.start("src/main/webapp", 8080, "/jfinal_demo.txt", 5);
     }
 }

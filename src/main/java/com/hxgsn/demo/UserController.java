@@ -19,16 +19,16 @@ public class UserController extends Controller {
     //    @Before(xxx)
     public void index() {
 //        System.out.println("");
-//        render("/user.ftl");
+        render("/user.ftl");
 //        createToken();
-        renderText("user......");
+//        renderText("user......");
     }
 
     public void login() {
         keepPara();
-//        String user = getPara("user");
+        String user = getPara("user");
 //        setAttr("user",user);
-//        String password = getPara("password");
+        String password = getPara("password");
 //        setAttr("password",password);
 
 //        keepBean(beanClass);
@@ -36,7 +36,12 @@ public class UserController extends Controller {
 //        keepModel(modelClass);
 //        getModel(modelClass);
 
-        render("/user_center.ftl");
+        String pwd = users.get(user);
+        if (pwd != null && pwd.equals(password)) {
+            setSessionAttr("user", user);
+        }
+        redirect("/user/center");
+//        render("/user_center.ftl");
 //        if (!validateCaptcha("yzm")) {
 //            System.out.println("验证码验证不通过～～～～～");
 //            redirect("/user");
@@ -83,24 +88,26 @@ public class UserController extends Controller {
     public void center() {
 //        String user = getCookie("user");
 
-        String cookieinfo = getCookie("user");
-
-        if (cookieinfo == null) {
-            redirect("/user");
-            return;
-        }
-
-        String user = cookieinfo.split("#")[0];
-        String sha512 = cookieinfo.split("#")[1];
-
-        if (HashKit.sha512(user + sha512_pwd).equals(sha512)) {
-            System.out.println(">>>>> 合法的用户");
-            renderText(user + ",欢迎来到用户中心...");
-        } else {
-            System.out.println(">>>>> 非法的用户");
-            renderText(user + ",你是非法用户！！！！");
-        }
+//        String cookieinfo = getCookie("user");
+//
+//        if (cookieinfo == null) {
+//            redirect("/user");
+//            return;
+//        }
+//
+//        String user = cookieinfo.split("#")[0];
+//        String sha512 = cookieinfo.split("#")[1];
+//
+//        if (HashKit.sha512(user + sha512_pwd).equals(sha512)) {
+//            System.out.println(">>>>> 合法的用户");
+//            renderText(user + ",欢迎来到用户中心...");
+//        } else {
+//            System.out.println(">>>>> 非法的用户");
+//            renderText(user + ",你是非法用户！！！！");
+//        }
         //username#md5(username); #user
+
+        renderHtml("欢迎来到用户中心...点击<a href=\"../download/jfinal_demo.txt\">这里</a>可以下载");
     }
 
     public void yzm() {

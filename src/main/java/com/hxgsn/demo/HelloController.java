@@ -28,6 +28,6 @@ public class HelloController extends Controller {
     }
 
     public void download() {
-        renderFile("jfinal_demo");
+        renderFile("jfinal_demo.txt");
     }
 }
