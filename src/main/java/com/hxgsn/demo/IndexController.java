@@ -1,5 +1,9 @@
 package com.hxgsn.demo;
 
+import com.hxgsn.interceptor.Interceptor1;
+import com.hxgsn.interceptor.Interceptor2;
+import com.jfinal.aop.Before;
+import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
 import com.jfinal.upload.UploadFile;
 
@@ -8,6 +12,7 @@ import java.net.URLDecoder;
 /**
  * Created by zgc on 16-7-13.
  */
+@Clear(Interceptor1.class)
 public class IndexController extends Controller {
 
 //    public int index() {
@@ -17,6 +22,8 @@ public class IndexController extends Controller {
 //        return 0;
 //    }
 
+    //    @Clear(Interceptor1.class)
+    @Before(Interceptor2.class)
     public void index() {
 //        String value1 = getPara("key1");
 //
@@ -66,47 +73,59 @@ public class IndexController extends Controller {
 //        String user = getSessionAttr("user");
 //        System.out.println("user >>>>>>" + user);
 //
-        render("/index.ftl");
+//        render("/index.ftl");
+        System.out.println(">>>>>>:IndexController-index");
+        renderText("index...");
     }
 
-    public void upload() {
-        //调用getFile，必须是multipart/form-data
-        //文件大小的限制可能会出错，通过config的setMaxPostSize去设置允许上传的最大数据
-        //getFile必须依赖com.jfinal.cos
-        //默认使用第一个实例化的UploadFile
-        getFile();
-        UploadFile sfzfile = getFile("sfz");
-        UploadFile ufile = getFile("tx", "touxiang");
-
-        //当有其它form提交的时候，先调用getFile解析MultipartRequest，才能调用getPara接受参数
-        String title = getPara("title");
-        System.out.println("=====title:" + title);
-
-        renderText("upload....");
+    @Before(Interceptor1.class)
+    public void index2() {
+        System.out.println(">>>>>>:IndexController-index");
+        renderText("index2...");
     }
+
+    public void index3() {
+
+    }
+
+//    public void upload() {
+    //调用getFile，必须是multipart/form-data
+    //文件大小的限制可能会出错，通过config的setMaxPostSize去设置允许上传的最大数据
+    //getFile必须依赖com.jfinal.cos
+    //默认使用第一个实例化的UploadFile
+//        getFile();
+//        UploadFile sfzfile = getFile("sfz");
+//        UploadFile ufile = getFile("tx", "touxiang");
+
+    //当有其它form提交的时候，先调用getFile解析MultipartRequest，才能调用getPara接受参数
+//        String title = getPara("title");
+//        System.out.println("=====title:" + title);
+//
+//        renderText("upload....");
+//    }
 
 //    public void jpress() {
 //        System.out.println("xxxx");
 //        renderText("x");
 //    }
 
-    public void cookie() {
-        String username = getPara("user");
-        String password = getPara("pwd");
-
-        if ("test".equals(username) && "t".equals(password)) {
+//    public void cookie() {
+//        String username = getPara("user");
+//        String password = getPara("pwd");
+//
+//        if ("test".equals(username) && "t".equals(password)) {
 //            setCookie("user", "test", 60 * 60 * 24);
-            //设置session，给客户端颁发了一个通行证：JSESSIONID：随机字符串
-            //同时设置了一个MAP,通过 随机字符串 对应到 >>> map
-            setSessionAttr("user", "test");
-        }
+    //设置session，给客户端颁发了一个通行证：JSESSIONID：随机字符串
+    //同时设置了一个MAP,通过 随机字符串 对应到 >>> map
+//            setSessionAttr("user", "test");
+//        }
 //        else {
 //            removeCookie("user");
 //        }
 
-        if ("t".equals(username) && "test".equals(password)) {
-            setSessionAttr("user", "t");
-        }
-        renderText("ok >>>");
-    }
+//        if ("t".equals(username) && "test".equals(password)) {
+//            setSessionAttr("user", "t");
+//        }
+//        renderText("ok >>>");
+//    }
 }

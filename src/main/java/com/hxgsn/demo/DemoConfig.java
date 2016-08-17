@@ -2,6 +2,8 @@ package com.hxgsn.demo;
 
 import com.hxgsn.handler.Handler1;
 import com.hxgsn.handler.Handler2;
+import com.hxgsn.interceptor.Interceptor1;
+import com.hxgsn.interceptor.Interceptor2;
 import com.hxgsn.render.freemarker.ArticlesTag;
 import com.jfinal.config.*;
 import com.jfinal.ext.handler.FakeStaticHandler;
@@ -91,13 +93,15 @@ public class DemoConfig extends JFinalConfig {
     }
 
     public void configInterceptor(Interceptors me) {
+//        me.add(new Interceptor1());
+//        me.add(new Interceptor2());
     }
 
     public void configHandler(Handlers me) {
 //        me.add(handler);
 //        me.add(new FakeStaticHandler());
-        me.add(new Handler1());
-        me.add(new Handler2());
+//        me.add(new Handler1());
+//        me.add(new Handler2());
     }
 
     @Override
