@@ -93,7 +93,7 @@ public class DemoConfig extends JFinalConfig {
     }
 
     public void configInterceptor(Interceptors me) {
-//        me.add(new Interceptor1());
+        me.add(new Interceptor1());
 //        me.add(new Interceptor2());
     }
 

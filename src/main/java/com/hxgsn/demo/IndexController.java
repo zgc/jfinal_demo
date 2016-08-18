@@ -2,6 +2,7 @@ package com.hxgsn.demo;
 
 import com.hxgsn.interceptor.Interceptor1;
 import com.hxgsn.interceptor.Interceptor2;
+import com.hxgsn.interceptor.Interceptor3;
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
@@ -12,7 +13,8 @@ import java.net.URLDecoder;
 /**
  * Created by zgc on 16-7-13.
  */
-@Clear(Interceptor1.class)
+//@Clear(Interceptor1.class)
+@Before(Interceptor2.class)
 public class IndexController extends Controller {
 
 //    public int index() {
@@ -23,8 +25,8 @@ public class IndexController extends Controller {
 //    }
 
     //    @Clear(Interceptor1.class)
-    @Before(Interceptor2.class)
-    public void index() {
+//    @Before(Interceptor2.class)
+//    public void index() {
 //        String value1 = getPara("key1");
 //
 //        System.out.println("value1=====" + value1);
@@ -68,24 +70,42 @@ public class IndexController extends Controller {
 
 //        getResponse().setHeader("test", "test");
 
-        //getSessionAttr内部先去获取浏览器提交的cookie，key：JSESSIONID == 随机字符串
-        //通过JSESSIONID找到MAP，然后再去这个map里获得user的值
+    //getSessionAttr内部先去获取浏览器提交的cookie，key：JSESSIONID == 随机字符串
+    //通过JSESSIONID找到MAP，然后再去这个map里获得user的值
 //        String user = getSessionAttr("user");
 //        System.out.println("user >>>>>>" + user);
 //
 //        render("/index.ftl");
-        System.out.println(">>>>>>:IndexController-index");
-        renderText("index...");
+//        System.out.println(">>>>>>:IndexController-index");
+//        renderText("index...");
+//    }
+
+//    @Before(Interceptor1.class)
+//    public void index2() {
+//        System.out.println(">>>>>>:IndexController-index");
+//        renderText("index2...");
+//    }
+
+    public void action1() {
+        System.out.println(">>>>>>:IndexController-action1");
+        renderText("action1...");
     }
 
-    @Before(Interceptor1.class)
-    public void index2() {
-        System.out.println(">>>>>>:IndexController-index");
-        renderText("index2...");
+    public void action2() {
+        System.out.println(">>>>>>:IndexController-action2");
+        renderText("action2...");
     }
 
-    public void index3() {
+    @Before({Interceptor3.class})
+    public void action3() {
+        System.out.println(">>>>>>:IndexController-action3");
+        renderText("action3...");
+    }
 
+    @Clear({Interceptor1.class, Interceptor2.class})
+    public void action4() {
+        System.out.println(">>>>>>:IndexController-action4");
+        renderText("action4...");
     }
 
 //    public void upload() {
