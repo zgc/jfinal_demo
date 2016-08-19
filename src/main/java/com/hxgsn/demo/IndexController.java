@@ -6,6 +6,14 @@ import com.hxgsn.interceptor.Interceptor3;
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
+import com.jfinal.ext.interceptor.GET;
+import com.jfinal.ext.interceptor.NoUrlPara;
+import com.jfinal.ext.interceptor.NotAction;
+import com.jfinal.ext.interceptor.POST;
+import com.jfinal.ext.interceptor.SessionInViewInterceptor;
+import com.jfinal.plugin.ehcache.CacheInterceptor;
+import com.jfinal.plugin.ehcache.CacheName;
+import com.jfinal.plugin.ehcache.EvictInterceptor;
 import com.jfinal.upload.UploadFile;
 
 import java.net.URLDecoder;
@@ -86,26 +94,42 @@ public class IndexController extends Controller {
 //        renderText("index2...");
 //    }
 
+    @Before(CacheInterceptor.class)
+    @CacheName("action")
     public void action1() {
         System.out.println(">>>>>>:IndexController-action1");
-        renderText("action1...");
+        renderJson("action1...");
     }
 
+    @Before(EvictInterceptor.class)
+    @CacheName("action")
     public void action2() {
         System.out.println(">>>>>>:IndexController-action2");
         renderText("action2...");
     }
 
-    @Before({Interceptor3.class})
+    //    @Before({Interceptor3.class})
+    @Before(SessionInViewInterceptor.class)
     public void action3() {
         System.out.println(">>>>>>:IndexController-action3");
-        renderText("action3...");
+        setSessionAttr("username", "test");
+        doSomething();
+        render("/action3.ftl");
     }
 
-    @Clear({Interceptor1.class, Interceptor2.class})
+    //    @Clear({Interceptor1.class, Interceptor2.class})
+//    @Before(GET.class)
+    @Before(NoUrlPara.class)
     public void action4() {
         System.out.println(">>>>>>:IndexController-action4");
         renderText("action4...");
+        doSomething();
+    }
+
+    @Before(NotAction.class)
+    public void doSomething() {
+        System.out.println(">>>>>>:IndexController-doSomething");
+        renderText("doSomething...");
     }
 
 //    public void upload() {

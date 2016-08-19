@@ -7,6 +7,7 @@ import com.hxgsn.interceptor.Interceptor2;
 import com.hxgsn.render.freemarker.ArticlesTag;
 import com.jfinal.config.*;
 import com.jfinal.ext.handler.FakeStaticHandler;
+import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.jfinal.render.FreeMarkerRender;
 import com.jfinal.render.IMainRenderFactory;
 import com.jfinal.render.Render;
@@ -90,6 +91,7 @@ public class DemoConfig extends JFinalConfig {
     }
 
     public void configPlugin(Plugins me) {
+        me.add(new EhCachePlugin());
     }
 
     public void configInterceptor(Interceptors me) {

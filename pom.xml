@@ -23,6 +23,12 @@
         <freemarker.version>2.3.25-incubating</freemarker.version>
         <!-- cos 版本号 -->
         <cos.version>26Dec2008</cos.version>
+        <!-- ehcache-core 版本号 -->
+        <ehcache-core.version>2.6.11</ehcache-core.version>
+        <!-- slf4j-log4j12 版本号 -->
+        <slf4j-log4j12.version>1.7.21</slf4j-log4j12.version>
+        <!-- log4j-core 版本号 -->
+        <log4j-core.version>2.6.2</log4j-core.version>
         <!-- Maven 镜像地址 -->
         <repository.url>http://repository.jboss.org/nexus/content/groups/public</repository.url>
     </properties>
@@ -54,6 +60,30 @@
             <groupId>com.jfinal</groupId>
             <artifactId>cos</artifactId>
             <version>${cos.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/net.sf.ehcache/ehcache-core -->
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache-core</artifactId>
+            <version>${ehcache-core.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j-log4j12.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j-core.version}</version>
         </dependency>
     </dependencies>
     <!-- Maven mirror -->
