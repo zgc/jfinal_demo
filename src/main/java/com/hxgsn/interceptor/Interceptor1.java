@@ -9,11 +9,17 @@ public class Interceptor1 extends BaseInterceptor {
     @Override
     public void intercept(Invocation inv) {
         System.out.println(">>>>>>:interceptor-1");
-        inv.invoke();
-//        if ("/user".equals(inv.getActionKey())) {
-//            inv.invoke();
-//            return;
-//        }
+        if ("/login".equals(inv.getActionKey())) {
+            inv.invoke();
+            return;
+        }
+        String user = null;
+        if (user == null) {
+            inv.getController().redirect("/login");
+            return;
+        } else {
+            inv.invoke();
+        }
 //        inv.getController().redirect("/user");
     }
 }

@@ -94,15 +94,15 @@ public class IndexController extends Controller {
 //        renderText("index2...");
 //    }
 
-    @Before(CacheInterceptor.class)
-    @CacheName("action")
+    //    @Before(CacheInterceptor.class)
+//    @CacheName("action")
     public void action1() {
         System.out.println(">>>>>>:IndexController-action1");
         renderJson("action1...");
     }
 
-    @Before(EvictInterceptor.class)
-    @CacheName("action")
+    //    @Before(EvictInterceptor.class)
+//    @CacheName("action")
     public void action2() {
         System.out.println(">>>>>>:IndexController-action2");
         renderText("action2...");
@@ -132,6 +132,9 @@ public class IndexController extends Controller {
         renderText("doSomething...");
     }
 
+    public void login() {
+        renderText("login page...");
+    }
 //    public void upload() {
     //调用getFile，必须是multipart/form-data
     //文件大小的限制可能会出错，通过config的setMaxPostSize去设置允许上传的最大数据
