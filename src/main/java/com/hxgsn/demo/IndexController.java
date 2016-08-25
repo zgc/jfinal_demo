@@ -98,7 +98,16 @@ public class IndexController extends Controller {
 //    @CacheName("action")
     public void action1() {
         System.out.println(">>>>>>:IndexController-action1");
-        renderJson("action1...");
+//        UserModel userModel = UserModel.DAO.findById(1);
+        UserModel userModel = new UserModel();
+        userModel.set("name", "u");
+        userModel.set("password", "p");
+        userModel.save();
+        System.out.println("user.id:" + userModel.getInt("id"));
+        UserModel user = UserModel.DAO.findById(userModel.getInt("id"));
+        String name = user.getStr("name");
+        String password = user.getStr("password");
+        renderJson("name:" + name + "\t" + "password:" + password);
     }
 
     //    @Before(EvictInterceptor.class)

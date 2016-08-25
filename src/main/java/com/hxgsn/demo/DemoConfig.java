@@ -7,6 +7,9 @@ import com.hxgsn.interceptor.Interceptor2;
 import com.hxgsn.render.freemarker.ArticlesTag;
 import com.jfinal.config.*;
 import com.jfinal.ext.handler.FakeStaticHandler;
+import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+import com.jfinal.plugin.activerecord.dialect.PostgreSqlDialect;
+import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.jfinal.render.FreeMarkerRender;
 import com.jfinal.render.IMainRenderFactory;
@@ -92,6 +95,15 @@ public class DemoConfig extends JFinalConfig {
 
     public void configPlugin(Plugins me) {
         me.add(new EhCachePlugin());
+
+        DruidPlugin druidPlugin = new DruidPlugin("jdbc:postgresql://localhost:5432/dev", "dev", "dev");
+        me.add(druidPlugin);
+
+        ActiveRecordPlugin activeRecordPlugin = new ActiveRecordPlugin(druidPlugin);
+        activeRecordPlugin.addMapping("tb_user", UserModel.class);
+        activeRecordPlugin.setShowSql(true);
+        activeRecordPlugin.setDialect(new PostgreSqlDialect());
+        me.add(activeRecordPlugin);
     }
 
     public void configInterceptor(Interceptors me) {

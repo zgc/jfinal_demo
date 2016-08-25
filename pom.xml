@@ -29,8 +29,12 @@
         <slf4j-log4j12.version>1.7.21</slf4j-log4j12.version>
         <!-- log4j-core 版本号 -->
         <log4j-core.version>2.6.2</log4j-core.version>
+        <!-- druid 版本号 -->
+        <druid.version>1.0.25</druid.version>
+        <!-- postgresql 版本号 -->
+        <postgresql.version>9.4.1209.jre7</postgresql.version>
         <!-- Maven 镜像地址 -->
-        <repository.url>http://repository.jboss.org/nexus/content/groups/public</repository.url>
+        <repository.url>https://repository.jboss.org/nexus/content/groups/public</repository.url>
     </properties>
     <dependencies>
         <dependency>
@@ -84,6 +88,18 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log4j-core.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
         </dependency>
     </dependencies>
     <!-- Maven mirror -->
