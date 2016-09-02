@@ -11,8 +11,8 @@
     <properties>
         <!-- jdk 版本号 -->
         <jdk.version>1.8</jdk.version>
-        <!-- maven 版本号 -->
-        <org.apache.maven.plugins.version>3.5.1</org.apache.maven.plugins.version>
+        <!-- maven plugin compiler 版本号 -->
+        <org.apache.maven.plugin.compiler.version>3.5.1</org.apache.maven.plugin.compiler.version>
         <!-- junit 版本号 -->
         <junit.version>4.12</junit.version>
         <!-- jfinal 版本号 -->
@@ -33,8 +33,8 @@
         <druid.version>1.0.25</druid.version>
         <!-- postgresql 版本号 -->
         <postgresql.version>9.4.1209.jre7</postgresql.version>
-        <!-- Maven 镜像地址 -->
-        <repository.url>https://repository.jboss.org/nexus/content/groups/public</repository.url>
+        <!-- encoding -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
         <dependency>
@@ -102,45 +102,18 @@
             <version>${postgresql.version}</version>
         </dependency>
     </dependencies>
-    <!-- Maven mirror -->
-    <repositories>
-        <repository>
-            <id>nexus</id>
-            <name>local private nexus</name>
-            <url>${repository.url}</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-    <!-- Maven Plugin mirror -->
-    <pluginRepositories>
-        <pluginRepository>
-            <id>nexus</id>
-            <name>local private nexus</name>
-            <url>${repository.url}</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
     <build>
         <finalName>jfinal_demo</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${org.apache.maven.plugins.version}</version>
+                <version>${org.apache.maven.plugin.compiler.version}</version>
                 <!-- 设置jdk版本 -->
                 <configuration>
                     <source>${jdk.version}</source>
                     <target>${jdk.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
         </plugins>

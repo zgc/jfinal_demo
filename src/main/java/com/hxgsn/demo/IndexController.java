@@ -3,6 +3,7 @@ package com.hxgsn.demo;
 import com.hxgsn.interceptor.Interceptor1;
 import com.hxgsn.interceptor.Interceptor2;
 import com.hxgsn.interceptor.Interceptor3;
+import com.hxgsn.model.UserModel;
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
@@ -98,16 +99,28 @@ public class IndexController extends Controller {
 //    @CacheName("action")
     public void action1() {
         System.out.println(">>>>>>:IndexController-action1");
-//        UserModel userModel = UserModel.DAO.findById(1);
+//        UserModel userModel = UserModel.DAO.findById(3);
         UserModel userModel = new UserModel();
-        userModel.set("name", "u");
-        userModel.set("password", "p");
+        userModel.set("name", "测试");
+        userModel.set("password", "试一试");
         userModel.save();
         System.out.println("user.id:" + userModel.getInt("id"));
-        UserModel user = UserModel.DAO.findById(userModel.getInt("id"));
-        String name = user.getStr("name");
-        String password = user.getStr("password");
-        renderJson("name:" + name + "\t" + "password:" + password);
+//        UserModel.DAO.deleteById(2);
+//        UserModel user = UserModel.DAO.findById(3);
+//        String name = user.getStr("name");
+//        String password = user.getStr("password");
+//        user.set("name", "试一试");
+//        user.set("password", "测试");
+//        user.update();
+//        renderJson("name:" + name + "\t" + "password:" + password);
+//        UserModel userModel = new UserModel();
+//        userModel.set("id", 3);
+//        userModel.set("name", "test");
+//        userModel.set("password", null);
+//        userModel.update();
+//        UserModel userModel = UserModel.DAO.findFirst("select * from tb_user where id = 3");
+//        System.out.println(">>>>>>name:" + userModel.getStr("name"));
+        renderText("ok");
     }
 
     //    @Before(EvictInterceptor.class)

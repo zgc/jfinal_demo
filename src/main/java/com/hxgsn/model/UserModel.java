@@ -1,4 +1,4 @@
-package com.hxgsn.demo;
+package com.hxgsn.model;
 
 import com.jfinal.plugin.activerecord.Model;
 
@@ -7,5 +7,4 @@ import com.jfinal.plugin.activerecord.Model;
  */
 public class UserModel extends Model<UserModel> {
 
-    public static final UserModel DAO = new UserModel();
 }
