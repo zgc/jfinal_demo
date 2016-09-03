@@ -4,6 +4,7 @@ import com.hxgsn.interceptor.Interceptor1;
 import com.hxgsn.interceptor.Interceptor2;
 import com.hxgsn.interceptor.Interceptor3;
 import com.hxgsn.model.UserModel;
+import com.hxgsn.model.UserService;
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
@@ -18,6 +19,7 @@ import com.jfinal.plugin.ehcache.EvictInterceptor;
 import com.jfinal.upload.UploadFile;
 
 import java.net.URLDecoder;
+import java.util.List;
 
 /**
  * Created by zgc on 16-7-13.
@@ -100,19 +102,20 @@ public class IndexController extends Controller {
     public void action1() {
         System.out.println(">>>>>>:IndexController-action1");
 //        UserModel userModel = UserModel.DAO.findById(3);
-        UserModel userModel = new UserModel();
-        userModel.set("name", "测试");
-        userModel.set("password", "试一试");
-        userModel.save();
-        System.out.println("user.id:" + userModel.getInt("id"));
+//        UserModel userModel = new UserModel();
+//        userModel.set("name", "测试");
+//        userModel.set("password", "试一试");
+//        userModel.save();
+//        System.out.println("user.id:" + userModel.getInt("id"));
 //        UserModel.DAO.deleteById(2);
 //        UserModel user = UserModel.DAO.findById(3);
-//        String name = user.getStr("name");
-//        String password = user.getStr("password");
+        UserModel user = UserService.findByMobile("13000000000");
+        String name = user.getStr("name");
+        String password = user.getStr("password");
 //        user.set("name", "试一试");
 //        user.set("password", "测试");
 //        user.update();
-//        renderJson("name:" + name + "\t" + "password:" + password);
+        renderJson("name:" + name + "\t" + "password:" + password);
 //        UserModel userModel = new UserModel();
 //        userModel.set("id", 3);
 //        userModel.set("name", "test");
@@ -120,7 +123,15 @@ public class IndexController extends Controller {
 //        userModel.update();
 //        UserModel userModel = UserModel.DAO.findFirst("select * from tb_user where id = 3");
 //        System.out.println(">>>>>>name:" + userModel.getStr("name"));
-        renderText("ok");
+//        renderText("ok");
+//        List<UserModel> userList = UserService.findBySex(2);
+//        for (UserModel u : userList) {
+//            System.out.println(">>>>user:" + u.getStr("name"));
+//        }
+        List<UserModel> userListAll = UserService.find(1, "1", null, null);
+        for (UserModel u : userListAll) {
+            System.out.println(">>>>user:" + u.getStr("name"));
+        }
     }
 
     //    @Before(EvictInterceptor.class)

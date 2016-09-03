@@ -4,6 +4,7 @@ import com.hxgsn.handler.Handler1;
 import com.hxgsn.handler.Handler2;
 import com.hxgsn.interceptor.Interceptor1;
 import com.hxgsn.interceptor.Interceptor2;
+import com.hxgsn.model.UserModel;
 import com.hxgsn.render.freemarker.ArticlesTag;
 import com.jfinal.config.*;
 import com.jfinal.ext.handler.FakeStaticHandler;
