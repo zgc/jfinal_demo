@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="ehcache.xsd"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
          updateCheck="false" monitoring="autodetect"
          dynamicConfig="true">
          
@@ -66,14 +66,24 @@
             />
 
     <cache name="action"
-           maxEntriesLocalHeap="10000"
-           maxEntriesLocalDisk="1000"
+           maxEntriesLocalHeap="500"
            eternal="false"
            overflowToDisk="true"
-           diskSpoolBufferSizeMB="20"
            timeToIdleSeconds="300"
            timeToLiveSeconds="600"
+           diskPersistent="true"
+           diskExpiryThreadIntervalSeconds="1"
            memoryStoreEvictionPolicy="LFU"
-           transactionalMode="off"
+    />
+
+    <cache name="page"
+           maxEntriesLocalHeap="500"
+           eternal="false"
+           overflowToDisk="true"
+           timeToIdleSeconds="300"
+           timeToLiveSeconds="600"
+           diskPersistent="true"
+           diskExpiryThreadIntervalSeconds="1"
+           memoryStoreEvictionPolicy="LFU"
     />
 </ehcache>

@@ -9,6 +9,7 @@ import com.hxgsn.render.freemarker.ArticlesTag;
 import com.jfinal.config.*;
 import com.jfinal.ext.handler.FakeStaticHandler;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+import com.jfinal.plugin.activerecord.cache.ICache;
 import com.jfinal.plugin.activerecord.dialect.PostgreSqlDialect;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
@@ -104,6 +105,27 @@ public class DemoConfig extends JFinalConfig {
         activeRecordPlugin.addMapping("tb_user", UserModel.class);
         activeRecordPlugin.setShowSql(true);
         activeRecordPlugin.setDialect(new PostgreSqlDialect());
+//        activeRecordPlugin.setCache(new ICache() {
+//            @Override
+//            public <T> T get(String cacheName, Object key) {
+//                return null;
+//            }
+//
+//            @Override
+//            public void put(String cacheName, Object key, Object value) {
+//
+//            }
+//
+//            @Override
+//            public void remove(String cacheName, Object key) {
+//
+//            }
+//
+//            @Override
+//            public void removeAll(String cacheName) {
+//
+//            }
+//        });
         me.add(activeRecordPlugin);
     }
 

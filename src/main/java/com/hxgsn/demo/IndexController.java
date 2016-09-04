@@ -15,6 +15,7 @@ import com.jfinal.ext.interceptor.POST;
 import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheInterceptor;
+import com.jfinal.plugin.ehcache.CacheKit;
 import com.jfinal.plugin.ehcache.CacheName;
 import com.jfinal.plugin.ehcache.EvictInterceptor;
 import com.jfinal.upload.UploadFile;
@@ -135,7 +136,7 @@ public class IndexController extends Controller {
 //        }
         int pageNumber = getParaToInt(0, 1);
         System.out.println(">>>pageNumber:" + pageNumber);
-        Page<UserModel> page = UserService.paginate(pageNumber, 2, null, "1", null, null);
+        Page<UserModel> page = UserService.paginate(pageNumber, 2, null, null, null, null);
         System.out.println(">>>TotalRow:" + page.getTotalRow());
         System.out.println(">>>PageNumber:" + page.getPageNumber());
         System.out.println(">>>PageSize:" + page.getPageSize());
@@ -151,6 +152,7 @@ public class IndexController extends Controller {
 //    @CacheName("action")
     public void action2() {
         System.out.println(">>>>>>:IndexController-action2");
+        CacheKit.removeAll("page");
         renderText("action2...");
     }
 

@@ -46,7 +46,8 @@ public class UserService {
         addWhere = AppendFieldLike(name, "name", sqlExceptSelect, params, addWhere);
         addWhere = AppendFieldLike(address, "address", sqlExceptSelect, params, addWhere);
         AppendFieldLike(mobile, "mobile", sqlExceptSelect, params, addWhere);
-        return DAO.paginate(page, pageSize, select, sqlExceptSelect.toString(), params.toArray());
+//        return DAO.paginate(page, pageSize, select, sqlExceptSelect.toString(), params.toArray());
+        return DAO.paginateByCache("page", "paginate" + page, page, pageSize, select, sqlExceptSelect.toString(), params.toArray());
     }
 
     private static boolean AppendField(Object data, String filed, StringBuffer sql, List<Object> params, boolean addWhere) {
