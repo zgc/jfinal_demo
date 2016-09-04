@@ -1,5 +1,7 @@
 package com.hxgsn.model;
 
+import com.jfinal.plugin.activerecord.Page;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +35,18 @@ public class UserService {
         addWhere = AppendFieldLike(address, "address", sql, params, addWhere);
         AppendFieldLike(mobile, "mobile", sql, params, addWhere);
         return DAO.find(sql.toString(), params.toArray());
+    }
+
+    public static Page<UserModel> paginate(int page, int pageSize, Integer sex, String name, String address, String mobile) {
+        String select = "select *";
+        StringBuffer sqlExceptSelect = new StringBuffer(" from tb_user");
+        List<Object> params = new ArrayList<>();
+        boolean addWhere = false;
+        addWhere = AppendField(sex, "sex", sqlExceptSelect, params, addWhere);
+        addWhere = AppendFieldLike(name, "name", sqlExceptSelect, params, addWhere);
+        addWhere = AppendFieldLike(address, "address", sqlExceptSelect, params, addWhere);
+        AppendFieldLike(mobile, "mobile", sqlExceptSelect, params, addWhere);
+        return DAO.paginate(page, pageSize, select, sqlExceptSelect.toString(), params.toArray());
     }
 
     private static boolean AppendField(Object data, String filed, StringBuffer sql, List<Object> params, boolean addWhere) {

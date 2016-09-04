@@ -13,6 +13,7 @@ import com.jfinal.ext.interceptor.NoUrlPara;
 import com.jfinal.ext.interceptor.NotAction;
 import com.jfinal.ext.interceptor.POST;
 import com.jfinal.ext.interceptor.SessionInViewInterceptor;
+import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.ehcache.CacheInterceptor;
 import com.jfinal.plugin.ehcache.CacheName;
 import com.jfinal.plugin.ehcache.EvictInterceptor;
@@ -109,13 +110,13 @@ public class IndexController extends Controller {
 //        System.out.println("user.id:" + userModel.getInt("id"));
 //        UserModel.DAO.deleteById(2);
 //        UserModel user = UserModel.DAO.findById(3);
-        UserModel user = UserService.findByMobile("13000000000");
-        String name = user.getStr("name");
-        String password = user.getStr("password");
+//        UserModel user = UserService.findByMobile("13000000000");
+//        String name = user.getStr("name");
+//        String password = user.getStr("password");
 //        user.set("name", "试一试");
 //        user.set("password", "测试");
 //        user.update();
-        renderJson("name:" + name + "\t" + "password:" + password);
+//        renderJson("name:" + name + "\t" + "password:" + password);
 //        UserModel userModel = new UserModel();
 //        userModel.set("id", 3);
 //        userModel.set("name", "test");
@@ -128,10 +129,22 @@ public class IndexController extends Controller {
 //        for (UserModel u : userList) {
 //            System.out.println(">>>>user:" + u.getStr("name"));
 //        }
-        List<UserModel> userListAll = UserService.find(1, "1", null, null);
-        for (UserModel u : userListAll) {
-            System.out.println(">>>>user:" + u.getStr("name"));
-        }
+//        List<UserModel> userListAll = UserService.find(1, "1", null, null);
+//        for (UserModel u : userListAll) {
+//            System.out.println(">>>>user:" + u.getStr("name"));
+//        }
+        int pageNumber = getParaToInt(0, 1);
+        System.out.println(">>>pageNumber:" + pageNumber);
+        Page<UserModel> page = UserService.paginate(pageNumber, 2, null, "1", null, null);
+        System.out.println(">>>TotalRow:" + page.getTotalRow());
+        System.out.println(">>>PageNumber:" + page.getPageNumber());
+        System.out.println(">>>PageSize:" + page.getPageSize());
+        System.out.println(">>>TotalPage:" + page.getTotalPage());
+        System.out.println(">>>FirstPage:" + page.isFirstPage());
+        System.out.println(">>>LastPage:" + page.isLastPage());
+        System.out.println(">>>List:" + page.getList());
+        setAttr("page", page);
+        render("/test.ftl");
     }
 
     //    @Before(EvictInterceptor.class)
