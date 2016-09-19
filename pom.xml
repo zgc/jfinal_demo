@@ -13,6 +13,8 @@
         <jdk.version>1.8</jdk.version>
         <!-- maven plugin compiler 版本号 -->
         <org.apache.maven.plugin.compiler.version>3.5.1</org.apache.maven.plugin.compiler.version>
+        <!-- maven plugin surefire 版本号 -->
+        <org.apache.maven.plugin.surefire.version>2.19.1</org.apache.maven.plugin.surefire.version>
         <!-- junit 版本号 -->
         <junit.version>4.12</junit.version>
         <!-- jfinal 版本号 -->
@@ -53,19 +55,16 @@
             <artifactId>jetty-server</artifactId>
             <version>${jetty-server.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.freemarker/freemarker -->
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
             <version>${freemarker.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.jfinal/cos -->
         <dependency>
             <groupId>com.jfinal</groupId>
             <artifactId>cos</artifactId>
             <version>${cos.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/net.sf.ehcache/ehcache-core -->
         <dependency>
             <groupId>net.sf.ehcache</groupId>
             <artifactId>ehcache-core</artifactId>
@@ -77,25 +76,21 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>${slf4j-log4j12.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log4j-core.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>${druid.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -113,7 +108,14 @@
                 <configuration>
                     <source>${jdk.version}</source>
                     <target>${jdk.version}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${org.apache.maven.plugin.surefire.version}</version>
+                <configuration>
+                    <skipTests>true</skipTests>
                 </configuration>
             </plugin>
         </plugins>
