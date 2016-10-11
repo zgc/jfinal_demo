@@ -34,9 +34,11 @@
         <!-- druid 版本号 -->
         <druid.version>1.0.25</druid.version>
         <!-- postgresql 版本号 -->
-        <postgresql.version>9.4.1209.jre7</postgresql.version>
+        <postgresql.version>9.4.1211.jre7</postgresql.version>
         <!-- encoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Maven 镜像地址 -->
+        <repository.url>http://maven.aliyun.com/nexus/content/groups/public</repository.url>
     </properties>
     <dependencies>
         <dependency>
@@ -97,6 +99,34 @@
             <version>${postgresql.version}</version>
         </dependency>
     </dependencies>
+    <!-- Maven mirror -->
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <name>local private nexus</name>
+            <url>${repository.url}</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <!-- Maven Plugin mirror -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>nexus</id>
+            <name>local private nexus</name>
+            <url>${repository.url}</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
     <build>
         <finalName>jfinal_demo</finalName>
         <plugins>
