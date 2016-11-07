@@ -1,27 +1,21 @@
 package com.hxgsn.demo;
 
-import com.hxgsn.handler.Handler1;
-import com.hxgsn.handler.Handler2;
+import com.hxgsn.controller.HelloController;
+import com.hxgsn.controller.IndexController;
+import com.hxgsn.controller.RenderController;
+import com.hxgsn.controller.StudentController;
+import com.hxgsn.controller.TestController;
+import com.hxgsn.controller.UserController;
 import com.hxgsn.interceptor.Interceptor1;
-import com.hxgsn.interceptor.Interceptor2;
+import com.hxgsn.model.StudentModel;
 import com.hxgsn.model.UserModel;
 import com.hxgsn.render.freemarker.ArticlesTag;
 import com.jfinal.config.*;
-import com.jfinal.ext.handler.FakeStaticHandler;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
-import com.jfinal.plugin.activerecord.cache.ICache;
 import com.jfinal.plugin.activerecord.dialect.PostgreSqlDialect;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.jfinal.render.FreeMarkerRender;
-import com.jfinal.render.IMainRenderFactory;
-import com.jfinal.render.Render;
-import com.jfinal.render.TextRender;
-import com.jfinal.render.ViewType;
-import com.jfinal.token.ITokenCache;
-import com.jfinal.token.Token;
-
-import java.util.List;
 
 /**
  * Created by zgc on 16-7-13.
@@ -91,6 +85,7 @@ public class DemoConfig extends JFinalConfig {
         me.add("/", IndexController.class);
         me.add("/user", UserController.class);
         me.add("/render", RenderController.class);
+        me.add("/student", StudentController.class);
 
         me.add("/test", TestController.class, "test/index");
     }
@@ -103,6 +98,7 @@ public class DemoConfig extends JFinalConfig {
 
         ActiveRecordPlugin activeRecordPlugin = new ActiveRecordPlugin(druidPlugin);
         activeRecordPlugin.addMapping("tb_user", UserModel.class);
+        activeRecordPlugin.addMapping("tb_student", "name,grade", StudentModel.class);
         activeRecordPlugin.setShowSql(true);
         activeRecordPlugin.setDialect(new PostgreSqlDialect());
 //        activeRecordPlugin.setCache(new ICache() {

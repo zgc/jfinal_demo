@@ -1,4 +1,4 @@
-package com.hxgsn.demo;
+package com.hxgsn.controller;
 
 import com.jfinal.core.Controller;
 
