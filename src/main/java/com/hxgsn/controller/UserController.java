@@ -1,5 +1,6 @@
 package com.hxgsn.controller;
 
+import com.hxgsn.model.UserModel;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.HashKit;
@@ -14,21 +15,23 @@ import java.util.Map;
  */
 public class UserController extends Controller {
 
-    private static final String sha512_pwd = "test";
+//  private static final String sha512_pwd = "test";
 
-    //    @Before(xxx)
-    public void index() {
+  //    @Before(xxx)
+  public void index() {
 //        System.out.println("");
-        render("/user.ftl");
+//    render("/user.ftl");
 //        createToken();
 //        renderText("user......");
-    }
+    UserModel userModel = UserModel.DAO.findById("123");
+    UserModel userModel1 = UserModel.DAO.use("mysql").findById("123");
+  }
 
-    public void login() {
-        keepPara();
-        String user = getPara("user");
+//  public void login() {
+//    keepPara();
+//    String user = getPara("user");
 //        setAttr("user",user);
-        String password = getPara("password");
+//    String password = getPara("password");
 //        setAttr("password",password);
 
 //        keepBean(beanClass);
@@ -36,11 +39,11 @@ public class UserController extends Controller {
 //        keepModel(modelClass);
 //        getModel(modelClass);
 
-        String pwd = users.get(user);
-        if (pwd != null && pwd.equals(password)) {
-            setSessionAttr("user", user);
-        }
-        redirect("/user/center");
+//    String pwd = users.get(user);
+//    if (pwd != null && pwd.equals(password)) {
+//      setSessionAttr("user", user);
+//    }
+//    redirect("/user/center");
 //        render("/user_center.ftl");
 //        if (!validateCaptcha("yzm")) {
 //            System.out.println("验证码验证不通过～～～～～");
@@ -59,7 +62,7 @@ public class UserController extends Controller {
 //        String user = getPara("user");
 //        String password = getPara("password");
 
-        //第一步，通过用户名获取用户，看用户是否存在
+  //第一步，通过用户名获取用户，看用户是否存在
 //        String pwd = users.get(user);
 //        if (pwd == null) {
 //            redirect("/user");
@@ -82,10 +85,10 @@ public class UserController extends Controller {
 //            return;
 //        }
 
-        //username#md5(username);
-    }
+  //username#md5(username);
+//  }
 
-    public void center() {
+//  public void center() {
 //        String user = getCookie("user");
 
 //        String cookieinfo = getCookie("user");
@@ -105,19 +108,19 @@ public class UserController extends Controller {
 //            System.out.println(">>>>> 非法的用户");
 //            renderText(user + ",你是非法用户！！！！");
 //        }
-        //username#md5(username); #user
+  //username#md5(username); #user
 
-        renderHtml("欢迎来到用户中心...点击<a href=\"../download/jfinal_demo.txt\">这里</a>可以下载");
-    }
+//    renderHtml("欢迎来到用户中心...点击<a href=\"../download/jfinal_demo.txt\">这里</a>可以下载");
+//  }
 
-    public void yzm() {
-        renderCaptcha();
-    }
+//  public void yzm() {
+//    renderCaptcha();
+//  }
 
-    static Map<String, String> users = new HashMap<>();
+//  static Map<String, String> users = new HashMap<>();
 
-    static {
-        users.put("test", "t");
-        users.put("t", "test");
-    }
+//  static {
+//    users.put("test", "t");
+//    users.put("t", "test");
+//  }
 }
