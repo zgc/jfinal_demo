@@ -1,5 +1,8 @@
 package com.hxgsn.proxy;
 
+import com.jfinal.aop.Duang;
+import com.jfinal.aop.Enhancer;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -9,7 +12,10 @@ import java.lang.reflect.Proxy;
  */
 public class ProxyTest {
 
-  public static void main(String[] args) {
+    public static void main(String[] args) {
+
+//        Enhancer
+//        Duang
 
 //    UserServiceInterface userService = new UserServiceImpl();
 //    userService.addUser("user1");
@@ -17,10 +23,16 @@ public class ProxyTest {
 //    UserServiceInterface userService = new UserServiceImplProxy();
 //    userService.addUser("user1");
 
-    UserServiceInterface userService = (UserServiceInterface) Enhancer
-        .getService(UserServiceInterface.class);
-    userService.addUser("user1");
-    System.out.println(userService.getClass().getName());
+//        UserServiceInterface userService = (UserServiceInterface) JDKEnhancer.getService(UserServiceInterface.class);
+        UserServiceInterface userService = (UserServiceImpl) CglibEnhancer.getService(UserServiceImpl.class);
+
+        //区别1：JDK的Proxy来实现代理需要有接口，Cglib不需要，所以Cglib更加方便；
+        //区别2：JDK的Proxy是通过反射机制来调用，Cglib是通过生成子类代码的方式进行调用，所以Cglib的性能更好；
+
+        //Cglib是通过生成子类的方式来实现调用，final的方法不能被子类覆写；
+
+        userService.addUser("user1");
+        System.out.println(userService.getClass().getName());
 
 //    System.out.println("\n--------\n");
 //
@@ -29,7 +41,7 @@ public class ProxyTest {
 //            new UserServiceInvocation());
 //    userService1.addUser("user2");
 //    System.out.println(userService1.getClass().getName());
-  }
+    }
 
 //  static class UserServiceInvocation implements InvocationHandler {
 //

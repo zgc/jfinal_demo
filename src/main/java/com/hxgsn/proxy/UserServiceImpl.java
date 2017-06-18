@@ -5,13 +5,13 @@ package com.hxgsn.proxy;
  */
 public class UserServiceImpl implements UserServiceInterface {
 
-  @Override
-  public void addUser(String name) {
-    System.out.println("UserServiceImpl addUser");
-  }
+    @Override
+    public void addUser(String name) {
+        System.out.println("UserServiceImpl addUser:" + name);
+    }
 
-  @Override
-  public void delUser(String name) {
-    System.out.println("UserServiceImpl delUser");
-  }
+    @Override
+    public void delUser(String name) {
+        System.out.println("UserServiceImpl delUser");
+    }
 }
